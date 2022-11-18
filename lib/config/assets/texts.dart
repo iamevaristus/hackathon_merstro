@@ -6,7 +6,7 @@ class MTexts{
     return const TextStyle(
       fontSize: 16,
       color: MColors.black,
-      fontWeight: FontWeight.bold
+      fontWeight: FontWeight.normal
     );
   }
 

@@ -18,3 +18,23 @@ class MLoader extends StatelessWidget {
     );
   }
 }
+
+class WLInkDrop extends StatelessWidget {
+  const WLInkDrop({super.key, this.size = 20});
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: SafeArea(
+        child: Center(
+          child: LoadingAnimationWidget.inkDrop(
+            color: Theme.of(context).primaryColor,
+            size: size
+          )
+        )
+      ),
+    );
+  }
+}

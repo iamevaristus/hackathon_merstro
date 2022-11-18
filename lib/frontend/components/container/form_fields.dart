@@ -14,11 +14,11 @@ class MTextFormField extends StatelessWidget {
     super.key,
     this.controller,
     this.enabled,
-    this.keyboard,
+    this.keyboard = TextInputType.text,
     this.obscure = false,
     this.validate,
     required this.formName,
-    required this.labeltext, this.inputAction
+    required this.labeltext, this.inputAction = TextInputAction.next
   });
 
   @override

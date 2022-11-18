@@ -10,4 +10,5 @@ class MColors{
   static const greyed = Color(0xffC6C6C6);
   static const primary = Color(0xff1470a2);
   static const secondary = Color(0xff266297);
+  static const yellow = Color(0xffBC5505);
 }

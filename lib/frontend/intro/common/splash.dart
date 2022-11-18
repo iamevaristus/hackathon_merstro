@@ -12,7 +12,7 @@ class MSplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: MImages.logo,
-      nextScreen: const MOnboardScreen(),
+      nextScreen: const MChecker(),
       backgroundColor: MColors.primary,
       pageTransitionType: PageTransitionType.leftToRightWithFade,
       splashTransition: SplashTransition.fadeTransition,

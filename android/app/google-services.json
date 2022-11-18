@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "643204888605",
+    "project_id": "merstro-ee2ac",
+    "storage_bucket": "merstro-ee2ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643204888605:android:1fe947b5c8548d47a2aef4",
+        "android_client_info": {
+          "package_name": "com.merstro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643204888605-1rk7c3g4oho81hktq12succvm7d8untp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_io2RsqBcpnT9spnGUq6LO7QGYq68hyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643204888605-1rk7c3g4oho81hktq12succvm7d8untp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

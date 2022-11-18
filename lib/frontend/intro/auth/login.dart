@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 import 'package:merstro/lib.dart';
 
@@ -11,7 +12,20 @@ class MLoginScreen extends StatefulWidget {
 }
 
 class _MLoginScreenState extends State<MLoginScreen> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController emailAddress = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  bool isLoading = false;
+  bool isVisible = false;
+
+  signin() async {
+    if(!_formKey.currentState!.validate()) return;
+    _formKey.currentState!.save();
+
+    MAuthentication emailPassword = Provider.of<MAuthentication>(context, listen: false);
+    emailPassword.signIn(email: emailAddress.text, password: password.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +62,30 @@ class _MLoginScreenState extends State<MLoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const MTextFormField(
+                      MTextFormField(
                         formName: "Email Address",
                         labeltext: "sample@gmail.com",
+                        controller: emailAddress,
+                        keyboard: TextInputType.emailAddress,
+                        inputAction: TextInputAction.next,
                       ),
                       const SizedBox(height: 10),
                       MPasswordField(
                         formName: "Password",
                         labelText: "Enter your strong password",
-                        onPressed: () {},
-                        icon: const Icon(CupertinoIcons.eye, color: MColors.greyer)
+                        controller: password,
+                        keyboard: TextInputType.visiblePassword,
+                        inputAction: TextInputAction.done,
+                        obscureText: !isVisible,
+                        onPressed: () {
+                          setState(() {
+                            isVisible = !isVisible;
+                          });
+                        },
+                        icon: Icon(
+                          isVisible ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                          color: MColors.greyer,
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -70,7 +98,16 @@ class _MLoginScreenState extends State<MLoginScreen> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      MButton(text: "Log In", width: width,)
+                      Consumer<MAuthentication>(
+                        builder: (context, emailPassword, _) {
+                          return MButton(
+                            text: "Log In",
+                            width: width,
+                            onClick: () => signin(),
+                            loading: emailPassword.isLoading,
+                          );
+                        }
+                      )
                     ],
                   )
                 ),
